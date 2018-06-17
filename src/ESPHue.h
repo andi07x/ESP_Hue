@@ -7,6 +7,7 @@
     GNU GPL, include above text in redistribution
 ***************************************************************************/
 #include <ESP8266WiFi.h>
+#include <RestClient.h>
 
 ////////////////////////////////////////
 // ESPHue Class
@@ -36,7 +37,7 @@ class ESPHue
 		const char* _apiKey;
 		uint8_t _port;
 		WiFiClient* _client;
-		
+		RestClient _restclient;
 };
 
 
