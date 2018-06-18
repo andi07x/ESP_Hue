@@ -66,10 +66,6 @@ int ESPHue::getLightState(byte lightNum)
 
 void ESPHue::setLight(byte lightNum, byte state, byte sat, byte bri, unsigned int hue)
 {
-  if (!_client->connect(_host, _port)) {
-    Serial.println("connection failed");
-    return;
-  }
   String url = "/api/" + String(_apiKey) + "/lights/" + lightNum + "/state";
   String cmd = "{\"on\":";
   if (state == 1)
@@ -83,10 +79,6 @@ void ESPHue::setLight(byte lightNum, byte state, byte sat, byte bri, unsigned in
 
 void ESPHue::setLight(byte lightNum, byte state, byte sat, byte bri, unsigned int hue, unsigned int trans)
 {
-  if (!_client->connect(_host, _port)) {
-    Serial.println("connection failed");
-    return;
-  }
   String url = "/api/" + String(_apiKey) + "/lights/" + lightNum + "/state";
   String cmd = "{\"on\":";
   if (state == 1)
@@ -100,10 +92,6 @@ void ESPHue::setLight(byte lightNum, byte state, byte sat, byte bri, unsigned in
 
 void ESPHue::setLightPower(byte lightNum, byte state)
 {
-  if (!_client->connect(_host, _port)) {
-    Serial.println("connection failed");
-    return;
-  }
   String url = "/api/" + String(_apiKey) + "/lights/" + lightNum + "/state";
   String cmd = "{\"on\":";
   if (state == 1)
@@ -118,10 +106,6 @@ void ESPHue::setLightPower(byte lightNum, byte state)
 
 String ESPHue::getGroupInfo(byte groupNum)
 {
-  if (!_client->connect(_host, _port)) {
-    Serial.println("connection failed");
-    return "";
-  }
   String url = "/api/" + String(_apiKey) + "/groups/" + groupNum;
   _restclient.get(url);
   return _restclient.readResponse();
@@ -145,10 +129,6 @@ int ESPHue::getGroupState(byte groupNum)
 
 void ESPHue::setGroup(byte groupNum, byte state, byte sat, byte bri, unsigned int hue)
 {
-  if (!_client->connect(_host, _port)) {
-    Serial.println("connection failed");
-    return;
-  }
   String url = "/api/" + String(_apiKey) + "/groups/" + groupNum + "/action";
   String cmd = "{\"on\":";
   if (state == 1)
@@ -162,10 +142,6 @@ void ESPHue::setGroup(byte groupNum, byte state, byte sat, byte bri, unsigned in
 
 void ESPHue::setGroup(byte groupNum, byte state, byte sat, byte bri, unsigned int hue, unsigned int trans)
 {
-  if (!_client->connect(_host, _port)) {
-    Serial.println("connection failed");
-    return;
-  }
   String url = "/api/" + String(_apiKey) + "/groups/" + groupNum + "/action";
   String cmd = "{\"on\":";
   if (state == 1)
@@ -179,10 +155,6 @@ void ESPHue::setGroup(byte groupNum, byte state, byte sat, byte bri, unsigned in
 
 void ESPHue::setGroupPower(byte groupNum, byte state)
 {
-  if (!_client->connect(_host, _port)) {
-    Serial.println("connection failed");
-    return;
-  }
   String url = "/api/" + String(_apiKey) + "/groups/" + groupNum + "/action";
   String cmd = "{\"on\":";
   if (state == 1)
